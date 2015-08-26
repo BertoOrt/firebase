@@ -7,12 +7,22 @@ a {
   color: #00B7FF;
 }
 
-.remove {
+.remove, .name {
   display: inline-block;
   font-weight: bold;
 }
 
 .remove:hover {
+  cursor: pointer;
+}
+
+.delete {
+  color: #666;
+  display: inline-block;
+  margin-left: 2%;
+}
+
+.delete:hover {
   cursor: pointer;
 }
 
@@ -22,4 +32,17 @@ a {
 
 .complete {
   text-decoration: line-through;
+}
+
+.image {
+  width: 70px;
+  height: 50px;
+}
+
+.left, .right, .editForm {
+  display: inline-block;
+}
+
+.hide {
+  display: none;
 }

@@ -26,3 +26,21 @@ app.controller("todo", ["$scope", "$firebaseArray",
     }
     }
 ]);
+
+app.controller('chat', ["$scope", "$firebaseArray", function ($scope, $firebaseArray) {
+  var chatRef = new Firebase("https://torrid-inferno-625.firebaseio.com/chat/");
+  $scope.chats = $firebaseArray(chatRef);
+  $scope.newChat = {message: '', name: '', url: '', edit: false};
+  $scope.addChat = function () {
+    $scope.chats.$add($scope.newChat).then(function () {
+      $scope.newChat.message = '';
+    })
+  }
+  $scope.removeChat = function (chat) {
+    $scope.chats.$remove(chat)
+  }
+  $scope.updateChat = function(chat) {
+    chat.edit = false;
+    $scope.chats.$save(chat)
+  }
+}])

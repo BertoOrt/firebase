@@ -24,10 +24,25 @@ block content
         div(class='remove' ng-click="removeTodo(todo)") X 
         &nbsp;
         div(class='task' ng-class='{"complete": todo.completed}' ng-click='complete(todo)') {{todo.text}}
-  //- h1 Chat
-  //-   div(ng-repeat='message in messages track by $index')
-  //-     div(class='message')
-  //-       div(class='text') {{message.text}}
-  //-       div(class='delete') delete
-    //-     
-    //- form
+  h1 Chat
+  div(ng-controller='chat')
+    div(ng-repeat='chat in chats track by $index')
+      div(class='chat')
+        div(class='left')
+          img(class='image' ng-src='{{chat.url}}')
+        div(class='right')
+          div(class='name ') {{chat.name}}
+          div( ng-show='chat.edit' )
+            form(class='editForm' ng-submit='updateChat(chat)')
+              label(for='text')
+              input(type='text' name='message' ng-model='chat.message' id='text')
+          div(class='text ' ng-hide='chat.edit' ng-dblclick="chat.edit = true") {{chat.message}}
+      div(class='delete ' ng-click='removeChat(chat)') delete
+    form(ng-submit='addChat()')
+      label(for='name') Name
+      input(type='text' id='name' ng-model='newChat.name')
+      label(for='url') Url
+      input(type='text' id='url' ng-model='newChat.url')
+      label(for='message') Message
+      input(type='text' id='message' ng-model='newChat.message')
+      input(type='submit')
