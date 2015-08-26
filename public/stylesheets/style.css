@@ -6,3 +6,20 @@ body {
 a {
   color: #00B7FF;
 }
+
+.remove {
+  display: inline-block;
+  font-weight: bold;
+}
+
+.remove:hover {
+  cursor: pointer;
+}
+
+.task {
+  display: inline-block;
+}
+
+.complete {
+  text-decoration: line-through;
+}

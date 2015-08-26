@@ -1,10 +1,13 @@
 doctype html
-html
+html(ng-app="app")
   head
     title= title
     link(rel='stylesheet', href='/stylesheets/style.css')
     script(src='https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js')
+    script(src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js")
     script(src='https://cdn.firebase.com/js/client/2.2.1/firebase.js')
-    script(src='/javascripts/app.js')
+    script(src="https://cdn.firebase.com/libs/angularfire/1.1.2/angularfire.min.js")
   body
     block content
+    script(src='/javascripts/angular/app.js')
+    script(src='/javascripts/angular/controller.js')

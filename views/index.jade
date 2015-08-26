@@ -1,5 +1,33 @@
 extends layout
 
 block content
+  h1 Input
   input#nameInput(type='text', placeholder='Name')
   input#messageInput(type='text', placeholder='Message')
+  h1 Currency
+  div(ng-controller='currency')
+    input(type='number' style='width: 30px' ng-model='number')
+    select(name='type' ng-model='type' )
+      option(value='bitcoin') Bitcoin
+      option(value='litecoin') Litecoin
+      option(value='dogecoin') Dogecoin
+    p(ng-show="type === 'litecoin' && coinData.litecoin.ask"){{coinData.litecoin.ask * number | currency}}
+    p(ng-show="type === 'dogecoin' && coinData.dogecoin.ask"){{coinData.dogecoin.ask * number | currency}}
+    p(ng-show="type === 'bitcoin' && coinData.bitcoin.ask"){{coinData.bitcoin.ask * number | currency}}
+  h1 TODO
+  div(ng-controller='todo')
+    form(ng-submit='addTodo()')
+      label(for='todo') New Todo: 
+      input(type='text' id='todo' ng-model='newTodo.text')
+    div(ng-repeat='todo in todos track by $index') 
+      p
+        div(class='remove' ng-click="removeTodo(todo)") X 
+        &nbsp;
+        div(class='task' ng-class='{"complete": todo.completed}' ng-click='complete(todo)') {{todo.text}}
+  //- h1 Chat
+  //-   div(ng-repeat='message in messages track by $index')
+  //-     div(class='message')
+  //-       div(class='text') {{message.text}}
+  //-       div(class='delete') delete
+    //-     
+    //- form
